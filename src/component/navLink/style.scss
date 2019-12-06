@@ -1,0 +1,17 @@
+.nav-bar{
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    background: #e8e8e8;
+    .nav-item a{
+        display: block;
+        padding: 5px 20px;
+        color: #000000;
+        font-weight: 500;
+        &:hover{
+            text-decoration: none;
+            color: gray;
+        }
+    }
+}

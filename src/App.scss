@@ -1,0 +1,12 @@
+.note-app{
+    .note-main{
+        width: 70%;
+        margin: auto;
+        
+        @import "./component/noteTitle/style.scss";
+        @import "./component/navLink/style.scss";
+        @import "./component/noteList/style.scss";
+        @import "./component/noteNew/style.scss";
+    }
+    @import "./component/noteEdit/style.scss";
+}

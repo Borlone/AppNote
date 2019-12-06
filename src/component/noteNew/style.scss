@@ -1,0 +1,46 @@
+.note-newform{
+    padding: 0 100px;
+    .note-new{
+        padding: 15px;
+        border: 1px solid #d2d2d2;
+        border-radius: 5px;
+        .note-form{
+            padding: 15px;
+            border: 1px solid #d2d2d2;
+            border-radius: 5px;
+            .form-title{
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 15px;
+                .head-title{
+                    display: flex;
+                    align-items: center;
+                    i{
+                        font-size: 25px;
+                        margin-right: 5px;
+                    }
+                }
+                i:hover{
+                    cursor: pointer;
+                }
+            }
+            form .btn-type{
+                display: flex;
+                justify-content: flex-end;
+                button{
+                    border: none;
+                    padding: 5px 35px;
+                    i{margin-right: 5px;}
+                }
+                button[type="submit"]{
+                    background: green;
+                    margin-right: 10px;
+                }
+                button[type="button"]{
+                    background: red;
+                }
+            }
+        }
+    }
+}
+

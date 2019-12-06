@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import NoteList from "./component/noteList";
+import NoteNew from "./component/noteNew";
+import NoteTitle from "./component/noteTitle";
+import NoteEdit from "./component/noteEdit";
+import NavLink from "./component/navLink"; 
+import "./App.scss";
+import {BrowserRouter, Route} from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="note-app">
+      <div className="note-main">
+        <NoteTitle />
+        
+        <BrowserRouter>
+          <NavLink />
+          <Route path="/" exact component={NoteList} />
+          <Route path="/list" exact component={NoteList} />
+          <Route path="/new" exact component={NoteNew} />
+        </BrowserRouter>
+      </div>
+      <NoteEdit />
     </div>
   );
 }

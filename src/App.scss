@@ -2,8 +2,18 @@
     .note-main{
         width: 70%;
         margin: auto;
+        .note-title{
+            padding: 12px 100px;
+            display: flex;
+            align-items: center;
+            background: #313131;
+            color: #00a1ff;
+            i{
+                margin-right: 15px;
+                font-size: 35px;
+            }
+        }
         
-        @import "./component/noteTitle/style.scss";
         @import "./component/navLink/style.scss";
         @import "./component/noteList/style.scss";
         @import "./component/noteNew/style.scss";

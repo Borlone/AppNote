@@ -4,22 +4,19 @@ import NoteItem from "../noteItem";
 import {useSelector, useDispatch} from "react-redux";
 import axios from "axios";
 
-function renderNoteItem(arr){
-    return arr.map((i,index) => <NoteItem key={index} id={i.id} title={i.title} content={i.content} updated={i.updated} />)
-}
-
 function NoteList(){
     const data = useSelector((state) => state.data);
     const dispatch = useDispatch();
+    
+    function renderNoteItem(arr){
+        return arr.map((i,index) => <NoteItem key={index} index={index} id={i.id} title={i.title} content={i.content} updated={i.updated} />)
+    }
 
     useEffect(() => {
         axios.get('https://5de46834712f9b0014513b56.mockapi.io/note/listNote').then(res => {
-            dispatch({
-                type: "SHOW_LISTNOTE",
-                data: res.data
-            })
+            dispatch({type: "SHOW_LISTNOTE",data: res.data})
         })
-    })
+    },[])
 
     return(
         <div className="note-list">

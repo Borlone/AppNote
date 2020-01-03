@@ -1,25 +1,27 @@
-import React, {useEffect, useRef} from "react";
+import React from "react";
 import {useSelector, useDispatch} from "react-redux";
 import axios from "axios";
 
 function NoteEdit(){
     const showEdit = useSelector(state => state.showEdit);
-    const idNote = useSelector(state => state.idNote);
+    const note = useSelector(state => state.noteItem);
     const dispatch = useDispatch();
 
     function onSubmit(e){
-        const url = "https://5de46834712f9b0014513b56.mockapi.io/note/listNote/" + idNote
+        const url = "https://5de46834712f9b0014513b56.mockapi.io/note/listNote/" + note.id;
+        const data = {
+            title: e.target.title.value,
+            content: e.target.content.value,
+            tags: e.target.tags.value,
+            updated: new Date().toLocaleDateString()
+        }
         axios({
             method: 'put',
             url: url,
-            data: {
-                title: e.target.title.value,
-                content: e.target.content.value,
-                tags: e.target.tags.value,
-                updated: new Date().toLocaleDateString()
-            }
+            data: data
         }).then(res => {
             dispatch({type: "SHOW_EDITFORM"})
+            dispatch({type: "EDIT_NOTE", data: {note: res.data, index: note.index}})
         })
         e.preventDefault();
     }
@@ -43,12 +45,12 @@ function NoteEdit(){
                         </div>
                         <div className="form-group">
                             <label htmlFor="selectTags">Tags</label>
-                            <select name="tags" className="form-control" id="selectTags">
-                            <option>Homework</option>
-                            <option>Learning English</option>
-                            <option>Housework</option>
-                            <option>Exercise</option>
-                            <option>Research</option>
+                            <select name="tags" className="form-control" id="selectTags" defaultValue="Housework">
+                                <option>Homework</option>
+                                <option>Learning English</option>
+                                <option>Housework</option>
+                                <option>Exercise</option>
+                                <option>Research</option>
                             </select>
                         </div>
                         <div className="btn-type">

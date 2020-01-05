@@ -1,6 +1,13 @@
 .note-list{
     padding: 0 100px;
-    @import "../noteFind/style.scss";
+    .note-find{
+        display: flex;
+        margin: 25px 0;
+        input{
+            width: 100%;
+            padding-left: 5px;
+        }
+    }
     table{
         width: 100%;
         border-collapse: collapse;

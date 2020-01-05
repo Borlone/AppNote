@@ -1,30 +1,30 @@
-import React from 'react';
-import NoteList from "./component/noteList";
-import NoteNew from "./component/noteNew";
-import NoteEdit from "./component/noteEdit";
-import NavLink from "./component/navLink";
+import React, { Component } from 'react';
 import "./App.scss";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import NavLink from './component/navLink/NavLink';
+import NoteList from './component/noteList/NoteList';
+import NoteNew from './component/noteNew/NoteNew';
 
-function App() {
-  return (
-    <div className="note-app">
-      <div className="note-main">
-        <div className="note-title">
-          <i className="fas fa-edit"></i>
-          <span>Note Works</span>
+class App extends Component {
+  render() {
+    return (
+      <div className="note-app">
+        <div className="note-main">
+          <div className="note-title">
+            <i className="fas fa-edit"></i>
+            <span>Note Works</span>
+          </div>
+
+          <Router>
+            <NavLink />
+            <Route path="/" exact component={NoteList} />
+            <Route path="/list" exact component={NoteList} />
+            <Route path="/new" exact component={NoteNew} />
+          </Router>
         </div>
-
-        <Router>
-          <NavLink />
-          <Route path="/" exact component={NoteList} />
-          <Route path="/list" exact component={NoteList} />
-          <Route path="/new" exact component={NoteNew} />
-        </Router>
       </div>
-      <NoteEdit />
-    </div>
-  );
+    )
+  }
 }
 
 export default App;
